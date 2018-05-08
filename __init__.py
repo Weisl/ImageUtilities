@@ -17,11 +17,21 @@ Created by Matthias Patscheider
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
+#The addon is currently able to
+#       export ALL images to a csv. Procedural and images with no path are simply shown blank
+#       it shows the current image resolution. this value can not be changed
+#       create the material tree for all materials (DESTRUCTIVE)
+
+
+
+
+# TODO: Make a list of materials that are supposed to be effected by the texture reload and creation for the shader tree
+# TODO: Easily change the prefixes for the textures
 
 
 
 bl_info = {
-    "name": "Texture CSV Utilities",
+    "name": "Image Utilities",
     "description": "Export and import texture paths from csv files",
     "author": "Matthias Patscheider",
     "version": (0, 0, 1),

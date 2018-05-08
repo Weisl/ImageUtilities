@@ -20,6 +20,19 @@ Created by Matthias Patscheider
 import bpy
 import sys
 
+
+
+def loadImageTexture(node, filepath):
+    try:
+        texture = bpy.data.images.load(filepath, check_existing=True)
+        node.image = texture
+
+    except:
+        print("Could not find of open texture %s" % (filepath))
+              #str(sys.exc_info()[0]))
+
+
+
 class LoadImagesOp(bpy.types.Operator):
     bl_idname = "images.create_nodetree"
     bl_label = "Create Nodetree Images"
@@ -28,21 +41,22 @@ class LoadImagesOp(bpy.types.Operator):
 
     my_basecolor = bpy.props.BoolProperty(name = "Base Color", default = True)
     my_metallic = bpy.props.BoolProperty(name = "Metallic", default = True)
-    my_specular = bpy.props.BoolProperty(name = "Specular", default = True)
+    my_specular = bpy.props.BoolProperty(name = "Specular", default = False)
     my_roughness = bpy.props.BoolProperty(name = "Roughness", default = True)
     my_normal = bpy.props.BoolProperty(name = "Normal", default = True )
     my_ior = bpy.props.BoolProperty(name = "IOR", default = False)
 
     my_basecolor_suffix = bpy.props.StringProperty(name = "Base Color", default = "_B")
-    my_metallic_suffix = bpy.props.StringProperty(name = "Base Color", default = "_M")
-    my_specular_suffix = bpy.props.StringProperty(name = "Base Color", default = "_S")
-    my_roughness_suffix = bpy.props.StringProperty(name = "Base Color", default = "_R")
-    my_normal_suffix = bpy.props.StringProperty(name = "Base Color", default = "_N")
-    my_ior_suffix = bpy.props.StringProperty(name = "Base Color", default = "_IOR")
+    my_metallic_suffix = bpy.props.StringProperty(name = "Metallic", default = "_M")
+    my_specular_suffix = bpy.props.StringProperty(name = "Specular", default = "_S")
+    my_roughness_suffix = bpy.props.StringProperty(name = "Roughness", default = "_R")
+    my_normal_suffix = bpy.props.StringProperty(name = "Normal Map", default = "_N")
+    my_ior_suffix = bpy.props.StringProperty(name = "IOR", default = "_IOR")
 
     @classmethod
     def poll(cls, context):
         return True
+
 
     def execute(self, context):
         wm = context.window_manager
@@ -123,26 +137,17 @@ class LoadImagesOp(bpy.types.Operator):
             node_output.name = 'Material Output'
             node_output.location = 0, 0
 
-            try:
-                texture_BaseColor = bpy.data.images.load(filepath_B, check_existing=True)
-                texture_Normal = bpy.data.images.load(filepath_N, check_existing=True)
-                texture_Roughness = bpy.data.images.load(filepath_R, check_existing=True)
-                texture_Metalness = bpy.data.images.load(filepath_M, check_existing=True)
+            if self.my_basecolor:
+                loadImageTexture(node_baseColor, filepath_B)
+            if self.my_normal:
+                loadImageTexture(node_normal, filepath_N)
+            if self.my_roughness:
+                loadImageTexture(node_roughness, filepath_R)
+            if self.my_metallic:
+                loadImageTexture(node_metallic, filepath_M)
+            if self.my_ior:
+                loadImageTexture(node_ior, filepath_IOR)
 
-
-                node_baseColor.image = texture_BaseColor
-                node_normal.image = texture_Normal
-                node_roughness.image = texture_Roughness
-                node_metallic.image = texture_Metalness
-
-            except:
-                print("1111  Unexpected error:" + str(sys.exc_info()[0]))
-
-            try:
-                texture_IOR = bpy.data.images.load(filepath_IOR, check_existing=True)
-                node_ior.image = texture_IOR
-            except:
-                print("2222  Unexpected error:" +  str(sys.exc_info()[0]))
 
             # link nodes
             links = mat.node_tree.links
