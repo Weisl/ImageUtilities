@@ -13,7 +13,7 @@ I wrote this small addon especially for this project. It was never designed to b
 - Change All Image Extensions: Operator to change all image extensions (e.g. form jpg to png)
 - Append To CSV: Doesn't overwrite the csv but appends the image paths at the bottom
 - Import CSV: Imports the csv and replaces all image paths for the images found in the csv
-<img src="images/readMe_04.png" width="20%">
+<img src="images/readMe_04.png" width="60%">
 
 # Example: 
 The goal for this scene was to create a 3d set that works from every position. This meant a lot of huge textures. Loading all textures for rendering took about half an hour!!!! I don't need the full resolution for all textures at all time. Even for preview I had to wait that long. Therefore, I wanted to easily scale textures down. Using the jpg with a resolution of 25% reduced the loading of the textures from half an hour to about 1 minute. Which really saved my life when iterating and doing lighting. I am even able to get the scene onto my GPU for rendering if I spend some time in optimizing the texture resolutions. 
