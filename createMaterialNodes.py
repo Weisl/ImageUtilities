@@ -20,20 +20,18 @@ Created by Matthias Patscheider
 import bpy
 import sys
 
-from .imageFile_utils import ImageFormatEnum
-
 class LoadImagesOp(bpy.types.Operator):
-    bl_idname = "images.load"
-    bl_label = "Load Images"
-    bl_description = ""
-    bl_options = {"REGISTER",""}
+    bl_idname = "images.create_nodetree"
+    bl_label = "Create Nodetree Images"
+    bl_description = "Create the node system depending on what inputs are enabled"
+    bl_options = {'REGISTER','UNDO'}
 
     my_basecolor = bpy.props.BoolProperty(name = "Base Color", default = True)
     my_metallic = bpy.props.BoolProperty(name = "Metallic", default = True)
     my_specular = bpy.props.BoolProperty(name = "Specular", default = True)
     my_roughness = bpy.props.BoolProperty(name = "Roughness", default = True)
     my_normal = bpy.props.BoolProperty(name = "Normal", default = True )
-    my_ior = bpy.props.BoolProperty(name = "IOR", default = True)
+    my_ior = bpy.props.BoolProperty(name = "IOR", default = False)
 
     my_basecolor_suffix = bpy.props.StringProperty(name = "Base Color", default = "_B")
     my_metallic_suffix = bpy.props.StringProperty(name = "Base Color", default = "_M")

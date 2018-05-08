@@ -18,6 +18,8 @@ Created by Matthias Patscheider
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+
+
 bl_info = {
     "name": "Texture CSV Utilities",
     "description": "Export and import texture paths from csv files",
@@ -51,18 +53,19 @@ def register():
 
     WindowManager.csv_dir = bpy.props.StringProperty(
             name="Export Path",
-            subtype='FILE_PATH',
+            subtype='DIR_PATH',
             default=""
             )
 
     WindowManager.texture_dir = bpy.props.StringProperty(
-            name="Export Path",
-            subtype='FILE_PATH',
+            name="Texture Directory",
+            subtype='DIR_PATH',
             default=""
             )
 
     try: bpy.utils.register_module(__name__)
     except: traceback.print_exc()
+
     print("Registered {} with {} modules".format(bl_info["name"], len(modules)))
 
 def unregister():

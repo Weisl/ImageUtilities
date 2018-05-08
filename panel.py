@@ -4,7 +4,7 @@ debugMode = False
 
 class LayoutDemoPanel(bpy.types.Panel):
     """Creates a Panel in the scene context of the properties editor"""
-    bl_label = "Layout Demo"
+    bl_label = "Texture CSV Panel"
     bl_idname = "SCENE_PT_layout"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
@@ -23,18 +23,29 @@ class LayoutDemoPanel(bpy.types.Panel):
         row = layout.row()
         row.operator("images.path_change_extension")
         #row.operator("images.path_export_csv_old")
-        #row = layout.row()
-        row.operator("images.path_export_csv", text = "New CSV").my_append = False
-        row.operator("images.path_export_csv", text = "Append CSV").my_append = True
         row = layout.row()
-        row.operator("images.path_import_csv")
+        row.operator("images.path_export_csv", text = "New CSV").my_append = False
+        row.operator("images.path_export_csv", text = "Append To CSV").my_append = True
+
+        row = layout.row()
         row.operator("images.load_from_csv")
+
+
+        row = layout.row()
+        row.label("Create Material Tree")
         row = layout.row()
         row.prop(wm, "texture_dir")
         row = layout.row()
-        row.operator("images.load")
+        row.operator("images.create_nodetree")
+
+        #row = layout.row()
+        #
+
 
         if debugMode == True:
+            row = layout.row()
+            row.label(text = "Debut Mode")
+            row.operator("images.path_print_import_csv")
             row.operator("images.load_from_csv_replace001")
             row.operator("images.images.path_print_csv")
             row.operator("images.find_in_csv")
