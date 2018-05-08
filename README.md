@@ -7,3 +7,7 @@ I was working on a project with over 800 texture files and simply lost the overv
 I wrote this small addon especially fot the purpose of one single project. I wanted to be abble to quickly change texture resolutions and texture files. It was never designed to be really flexible. Nevertheless, I decided to publish it here as it really saved my life.
 
 # Export Csv
+
+![Alt text](images/readMe_01.png "Folder")
+![Alt text](images/readMe_02.png "Folder")
+![Alt text](images/readMe_03.png "Folder")
