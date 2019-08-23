@@ -35,7 +35,7 @@ bl_info = {
     "description": "Export and import texture paths from csv files",
     "author": "Matthias Patscheider",
     "version": (0, 0, 1),
-    "blender": (2, 79, 0),
+    "blender": (2, 80, 0),
     "location": "View3D",
     "warning": "This addon is still in development.",
     "wiki_url": "",

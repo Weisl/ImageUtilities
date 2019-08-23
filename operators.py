@@ -24,7 +24,7 @@ def getCsvPath():
         fn = os.path.join(wm.csv_dir, fn)
     return fn
 
-class IMAGES_change_extension(Operator):
+class IMAGES_OT_change_extension(Operator):
     """Replaces image file extensions"""
     bl_idname = "images.path_change_extension"
     bl_label = "Change All Image Extensions"
@@ -54,7 +54,7 @@ class IMAGES_change_extension(Operator):
 
         return {'FINISHED'}
 
-class IMAGES_export_csv(Operator):
+class IMAGES_OT_export_csv(Operator):
     """Export all texturepaths to a csv file"""
     bl_idname = "images.path_export_csv"
     bl_label = "Export Textures to CSV"
@@ -86,7 +86,7 @@ class IMAGES_export_csv(Operator):
         bpy.ops.file.make_paths_relative()
         return {'FINISHED'}
 
-class IMAGES_print_csv(Operator):
+class IMAGES_OT_print_csv(Operator):
     """Create a new Mesh Object"""
     bl_idname = "images.path_print_import_csv"
     bl_label = "Print CSV"
@@ -103,7 +103,7 @@ class IMAGES_print_csv(Operator):
         bpy.ops.file.make_paths_relative()
         return {'FINISHED'}
 
-class IMAGES_import_paths_from_csv(Operator):
+class IMAGES_OT_import_paths_from_csv(Operator):
     """Create a new Mesh Object"""
     bl_idname = "images.load_from_csv"
     bl_label = "Import CSV"
@@ -125,7 +125,7 @@ class IMAGES_import_paths_from_csv(Operator):
         bpy.ops.file.make_paths_relative()
         return {'FINISHED'}
 
-class IMAGES_load_paths_from_csv_02(Operator):
+class IMAGES_OT_load_paths_from_csv_02(Operator):
     """Load image paths from csv and replace '.001' with '' """
     bl_idname = "images.load_from_csv_replace001"
     bl_label = "Import CSV 02"
@@ -153,7 +153,7 @@ class IMAGES_load_paths_from_csv_02(Operator):
 
 
 ############# DEBUG OPERATORS #############
-class IMAGES_import_csv(Operator):
+class IMAGES_OT_import_csv(Operator):
     """Print csv content (mainly debug function)"""
     bl_idname = "images.path_print_csv"
     bl_label = "Print CSV"
@@ -173,7 +173,7 @@ class IMAGES_import_csv(Operator):
 
 
 
-class IMAGES_findIn_csv(Operator):
+class IMAGES_OT_findIn_csv(Operator):
     """Create a new Mesh Object"""
     bl_idname = "images.find_in_csv"
     bl_label = "Print CSV"
