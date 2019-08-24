@@ -12,11 +12,9 @@ def csvToDic(file):
 
     return result
 
-
-
 def dicToCsv(file, my_dict):
     '''Writes dictionary content into csv file and replaces old conent'''
-    with open(file, 'w', newline='') as f:  # Just use 'w' mode in 3.x
+    with open(file,'w') as f:
         csv_writer = csv.writer(f, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
         for k, v in my_dict.items():
@@ -26,7 +24,7 @@ def dicToCsv(file, my_dict):
 
 def appendDicToCsv(file, my_dict):
     '''Adds dictionary content to the end of the file'''
-    with open(file, 'a', newline='') as f:  # Just use 'w' mode in 3.x
+    with open(file, 'a', newline='') as f:
         csv_writer = csv.writer(f, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
         for k, v in my_dict.items():

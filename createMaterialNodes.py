@@ -31,8 +31,6 @@ def loadImageTexture(node, filepath):
         print("Could not find of open texture %s" % (filepath))
               #str(sys.exc_info()[0]))
 
-
-
 class IMAGES_OT_LoadImages(bpy.types.Operator):
     bl_idname = "images.create_nodetree"
     bl_label = "Create Nodetree Images"

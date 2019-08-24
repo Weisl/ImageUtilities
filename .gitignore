@@ -1,2 +1,11 @@
 
 test/*
+__pycache__/preferences.cpython-37.pyc
+__pycache__/panel.cpython-37.pyc
+__pycache__/operators.cpython-37.pyc
+__pycache__/imageFile_utils.cpython-37.pyc
+__pycache__/developer_utils.cpython-35.pyc
+__pycache__/csv_util.cpython-37.pyc
+__pycache__/createMaterialNodes.cpython-37.pyc
+__pycache__/__init__.cpython-37.pyc
+__pycache__/developer_utils.cpython-35.pyc

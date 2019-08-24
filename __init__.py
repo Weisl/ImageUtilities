@@ -40,20 +40,42 @@ bl_info = {
     "warning": "This addon is still in development.",
     "wiki_url": "",
     "category": "Object"}
+# load and reload submodules
+##################################
 
+if "bpy" in locals():
+    import importlib
+
+    importlib.reload(createMaterialNodes)
+    importlib.reload(csv_util)
+    importlib.reload(imageFile_utils)
+    importlib.reload(operators)
+    importlib.reload(panel)
+    importlib.reload(preferences)
+
+else:
+    from . import preferences
+    from . import createMaterialNodes
+    from . import csv_util
+    from . import imageFile_utils
+    from . import operators
+    from . import panel
 
 import bpy
 from bpy.types import WindowManager, Scene
 
-# load and reload submodules
-##################################
-
-import importlib
-from . import developer_utils
-importlib.reload(developer_utils)
-modules = developer_utils.setup_addon_modules(__path__, __name__, "bpy" in locals())
-
-
+classes = (
+    createMaterialNodes.IMAGES_OT_LoadImages,
+    operators.IMAGES_OT_change_extension,
+    operators.IMAGES_OT_export_csv,
+    operators.IMAGES_OT_print_csv,
+    operators.IMAGES_OT_import_paths_from_csv,
+    operators.IMAGES_OT_load_paths_from_csv_02,
+    operators.IMAGES_OT_import_csv,
+    operators.IMAGES_OT_findIn_csv,
+    panel.LAYOUT_PT_TexturePanel,
+    preferences.SomeAddonPrefs
+)
 
 # register
 ##################################
@@ -72,14 +94,12 @@ def register():
             subtype='DIR_PATH',
             default=""
             )
+    from bpy.utils import register_class
+    for cls in classes:
+        register_class(cls)
 
-    try: bpy.utils.register_module(__name__)
-    except: traceback.print_exc()
-
-    print("Registered {} with {} modules".format(bl_info["name"], len(modules)))
 
 def unregister():
-    try: bpy.utils.unregister_module(__name__)
-    except: traceback.print_exc()
-
-    print("Unregistered {}".format(bl_info["name"]))
+    from bpy.utils import unregister_class
+    for cls in reversed(classes):
+        unregister_class(cls)

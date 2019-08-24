@@ -6,7 +6,6 @@ from .csv_util import csvToDic, dicToCsv, appendDicToCsv,inCsv
 
 csvName = "_materialCSV"
 
-
 def getCsvPath():
     global csvName
     '''Checks if a valid File path exists other wise adds a new file in the same directory as the .blend file'''
@@ -170,8 +169,6 @@ class IMAGES_OT_import_csv(Operator):
         print (str(dic))
 
         return {'FINISHED'}
-
-
 
 class IMAGES_OT_findIn_csv(Operator):
     """Create a new Mesh Object"""
