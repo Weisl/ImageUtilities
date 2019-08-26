@@ -1,3 +1,7 @@
+# Blender 2.80 
+
+The master has been updated to Blender 2.80. Checkout the github releases for the Blender 2.79 addon
+
 # Texture CSV 
 
 This is a small addon for blender to export all image paths of a scene into a csv. These paths can be manipulated in an other software like Excel (search and replace) and afterward be reimported to change the actual image paths within the blend file as well. 
