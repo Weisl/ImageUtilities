@@ -1,14 +1,13 @@
 import bpy
 
-debugMode = False
+debugMode = True
 
-class LayoutDemoPanel(bpy.types.Panel):
+class LAYOUT_PT_TexturePanel(bpy.types.Panel):
     """Creates a Panel in the scene context of the properties editor"""
     bl_label = "Texture CSV Panel"
-    bl_idname = "SCENE_PT_layout"
-    bl_space_type = 'PROPERTIES'
-    bl_region_type = 'WINDOW'
-    bl_context = "scene"
+    bl_idname = "Misc"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
 
     def draw(self, context):
         global debugMode
@@ -32,7 +31,7 @@ class LayoutDemoPanel(bpy.types.Panel):
 
 
         row = layout.row()
-        row.label("Create Material Tree")
+        row.label(text = "Create Material Tree")
         row = layout.row()
         row.prop(wm, "texture_dir")
         row = layout.row()
