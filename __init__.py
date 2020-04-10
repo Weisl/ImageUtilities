@@ -54,12 +54,12 @@ if "bpy" in locals():
     importlib.reload(preferences)
 
 else:
-    from . import preferences
     from . import createMaterialNodes
     from . import csv_util
     from . import imageFile_utils
     from . import operators
     from . import panel
+    from . import preferences
 
 import bpy
 from bpy.types import WindowManager, Scene

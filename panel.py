@@ -5,7 +5,7 @@ debugMode = True
 class LAYOUT_PT_TexturePanel(bpy.types.Panel):
     """Creates a Panel in the scene context of the properties editor"""
     bl_label = "Texture CSV Panel"
-    bl_idname = "Misc"
+    bl_idname = "MISC"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
 

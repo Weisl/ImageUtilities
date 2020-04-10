@@ -31,7 +31,7 @@ class IMAGES_OT_change_extension(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
 
-    my_fileFormat = bpy.props.EnumProperty(
+    my_fileFormat : bpy.props.EnumProperty(
         items=ImageFormatEnum.items,
         name="File Extensions",
         default = 'png',
@@ -61,7 +61,8 @@ class IMAGES_OT_export_csv(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
 
-    my_append = bpy.props.BoolProperty(name= "append", default = False)
+    my_append : bpy.props.BoolProperty(name= "append", default = False)
+
     @classmethod
     def poll(cls, context):
         return True
