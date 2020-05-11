@@ -1,5 +1,6 @@
 # Blender 2.80 
 
+The addon is currently not continued. 
 The master has been updated to Blender 2.80. Checkout the github releases for the Blender 2.79 addon
 
 # Texture CSV 
