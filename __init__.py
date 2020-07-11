@@ -17,18 +17,10 @@ Created by Matthias Patscheider
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
-#The addon is currently able to
+# The addon is currently able to
 #       export ALL images to a csv. Procedural and images with no path are simply shown blank
 #       it shows the current image resolution. this value can not be changed
 #       create the material tree for all materials (DESTRUCTIVE)
-
-
-
-
-# TODO: Make a list of materials that are supposed to be effected by the texture reload and creation for the shader tree
-# TODO: Easily change the prefixes for the textures
-
-
 
 bl_info = {
     "name": "Image Utilities",
@@ -62,7 +54,7 @@ else:
     from . import preferences
 
 import bpy
-from bpy.types import WindowManager, Scene
+from bpy.types import WindowManager
 
 classes = (
     createMaterialNodes.IMAGES_OT_LoadImages,
@@ -74,26 +66,31 @@ classes = (
     operators.IMAGES_OT_import_csv,
     operators.IMAGES_OT_findIn_csv,
     panel.LAYOUT_PT_TexturePanel,
-    preferences.SomeAddonPrefs
+    #preferences.VIEW3D_OT_image_utilis_preferences
 )
+
 
 # register
 ##################################
-import traceback
 
 def register():
+    WindowManager.csv_export_dir = bpy.props.StringProperty(
+        name="Export Directory",
+        subtype='DIR_PATH',
+        default=""
+    )
 
-    WindowManager.csv_dir = bpy.props.StringProperty(
-            name="Export Path",
-            subtype='DIR_PATH',
-            default=""
-            )
+    WindowManager.csv_import_file = bpy.props.StringProperty(
+        name="Export Directory",
+        subtype='FILE_PATH',
+        default=""
+    )
 
     WindowManager.texture_dir = bpy.props.StringProperty(
-            name="Texture Directory",
-            subtype='DIR_PATH',
-            default=""
-            )
+        name="Texture Directory",
+        subtype='FILE_PATH',
+        default=""
+    )
     from bpy.utils import register_class
     for cls in classes:
         register_class(cls)

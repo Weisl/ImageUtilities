@@ -1,33 +1,39 @@
 import bpy
+from bpy.props import (
+    StringProperty,
+)
 
-class SomeAddonPrefs(bpy.types.AddonPreferences):
-    bl_idname = __name__
+
+class VIEW3D_OT_image_utilis_preferences(bpy.types.AddonPreferences):
+    '''Addon preferences'''
+
+    bl_idname = __package__
     # here you define the addons customizable props
 
-    bool_baseColor : bpy.props.StringProperty(name= "Basecolor",  default=True)
-    bool_roughnessMetalnessAO : bpy.props.StringProperty(name="RMA (roughnessMetalnessAo)", default=True)
-    bool_normal : bpy.props.StringProperty(name="Normal", default=True)
-    bool_emissive : bpy.props.StringProperty(name="Emissive", default=False)
-    bool_roughness : bpy.props.StringProperty(name="Roughness", default=False)
-    bool_metalness : bpy.props.StringProperty(name="Metalness", default=False)
-    bool_ambientOcclussion : bpy.props.StringProperty(name="AmbientOcclusion", default=False)
+    b_baseColor: StringProperty(name="Basecolor", default=True)
+    b_roughnessMetalnessAO: bpy.props.StringProperty(name="RMA (roughnessMetalnessAo)", default=True)
+    b_normal: bpy.props.StringProperty(name="Normal", default=True)
+    b_emissive: bpy.props.StringProperty(name="Emissive", default=False)
+    b_roughness: bpy.props.StringProperty(name="Roughness", default=False)
+    b_metalness: bpy.props.StringProperty(name="Metalness", default=False)
+    b_ambientOcclussion: bpy.props.StringProperty(name="AmbientOcclusion", default=False)
 
-    baseColorSuf : bpy.props.StringProperty(name= "Basecolor Suffix",  default="_B")
-    normalSuf : bpy.props.StringProperty(name= "Basecolor Suffix",  default="_N")
-    roughnessMetalnessAOSuf : bpy.props.StringProperty(name="RMA (roughnessMetalnessAo)", default="_RMA")
-    emissiveSuf : bpy.props.StringProperty(name="Emissive", default="_E")
-    roughnessSuf : bpy.props.StringProperty(name="Roughness", default="_R")
-    metalnessSuf : bpy.props.StringProperty(name="Metalness", default="_M")
-    ambientOcclussionSuf : bpy.props.StringProperty(name="AmbientOcclusion", default="_AO")
+    baseColorSuf: StringProperty(name="Basecolor Suffix", default="_B")
+    normalSuf: StringProperty(name="Basecolor Suffix", default="_N")
+    roughnessMetalnessAOSuf: StringProperty(name="RMA (roughnessMetalnessAo)", default="_RMA")
+    emissiveSuf: StringProperty(name="Emissive", default="_E")
+    roughnessSuf: StringProperty(name="Roughness", default="_R")
+    metalnessSuf: StringProperty(name="Metalness", default="_M")
+    ambientOcclussionSuf: StringProperty(name="AmbientOcclusion", default="_AO")
 
     props = [
-        "bool_baseColor",
-        "bool_roughnessMetalnessAO",
-        "bool_normal",
-        "bool_emissive",
-        "bool_roughness",
-        "bool_metalness",
-        "bool_ambientOcclussion",
+        "b_baseColor",
+        "b_roughnessMetalnessAO",
+        "b_normal",
+        "b_emissive",
+        "b_roughness",
+        "b_metalness",
+        "b_ambientOcclussion",
 
         "baseColorSuf",
         "normalSuf",
@@ -37,7 +43,6 @@ class SomeAddonPrefs(bpy.types.AddonPreferences):
         "metalnessSuf",
         "ambientOcclussionSuf"
     ]
-
 
     # here you specify how they are drawn
     def draw(self, context):

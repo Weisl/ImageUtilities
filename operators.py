@@ -7,9 +7,10 @@ from .csv_util import csvToDic, dicToCsv, appendDicToCsv,inCsv
 csvName = "_materialCSV"
 
 def getCsvPath():
-    global csvName
     '''Checks if a valid File path exists other wise adds a new file in the same directory as the .blend file'''
-    wm = wm = bpy.context.window_manager
+
+    global csvName
+    wm = bpy.context.window_manager
 
     blendPath = bpy.path.abspath('//')
     blendFile = bpy.data.filepath
@@ -17,10 +18,10 @@ def getCsvPath():
     filename, file_extension = os.path.splitext(blendFile)
     fn = filename + csvName + ".csv"
 
-    if wm.csv_dir == '' or wm.csv_dir is None:
+    if wm.csv_export_dir == '' or wm.csv_export_dir is None:
         fn = os.path.join(blendPath, fn)
     else:
-        fn = os.path.join(wm.csv_dir, fn)
+        fn = os.path.join(wm.csv_export_dir, fn)
     return fn
 
 class IMAGES_OT_change_extension(Operator):
@@ -41,7 +42,6 @@ class IMAGES_OT_change_extension(Operator):
     @classmethod
     def poll(cls, context):
         return True
-
 
     def execute(self, context):
         extension = self.my_fileFormat
@@ -83,6 +83,7 @@ class IMAGES_OT_export_csv(Operator):
             dicToCsv(fn,assets)
         else:
            appendDicToCsv(fn, assets)
+
         bpy.ops.file.make_paths_relative()
         return {'FINISHED'}
 
@@ -114,7 +115,9 @@ class IMAGES_OT_import_paths_from_csv(Operator):
         return True
 
     def execute(self, context):
-        fn = getCsvPath()
+        wm = bpy.context.window_manager
+
+        fn = wm.csv_import_file
         dic = csvToDic(fn)
 
         for key, imgData in dic.items():
